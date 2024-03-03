@@ -1,0 +1,5 @@
+There is no extra digit
+124 + 4 = 128
+123 + 5 = 128
+123 + 4 = 127
+There is no missing digit

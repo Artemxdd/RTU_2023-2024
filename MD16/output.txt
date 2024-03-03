@@ -1,0 +1,5 @@
+words: 270
+unique words: 93
+longest words: independently	
+most frequent words: the	
+most complex words: algorithms	matiyasevich	observation	previously	
