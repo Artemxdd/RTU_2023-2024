@@ -1,4 +1,4 @@
-# test1=test127
+# test1=test
 # Example config file /etc/vsftpd.conf
 #
 # The default compiled in settings are fairly paranoid. This sample file

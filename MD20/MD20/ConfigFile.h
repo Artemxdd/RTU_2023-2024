@@ -14,10 +14,10 @@ public:
 	void appendNewLine(const line& l);
 	bool changeConfigValue(const key& k, const value& v);
 
-	Config getConfig(const key& k);	
-	Config getConfigFromComments(const key& k);	
+	Config getConfig(const key& k) const;	
+	Config getConfigFromComments(const key& k) const;	
 
-	bool saveConfigToFile(const filePath& cfgFile);
+	bool saveConfigToFile(const filePath& cfgFile) const;
 
 private:
 	lines ls;	// Lines from cfg file
@@ -26,6 +26,6 @@ private:
 		CFG, COMMENT, BLANK
 	};
 
-	TypeOfLine getTypeOfLine(const line& l);
+	TypeOfLine getTypeOfLine(const line& l) const;
 };
 

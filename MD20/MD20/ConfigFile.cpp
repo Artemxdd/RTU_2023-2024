@@ -23,7 +23,7 @@ bool ConfigFile::changeConfigValue(const key& k, const value& v) {
 	return false;
 }
 
-Config ConfigFile::getConfig(const key& k) {
+Config ConfigFile::getConfig(const key& k) const {
 	for (const line& l : this->ls) {
 		if (getTypeOfLine(l) == CFG) {
 			Config cfg{ cfgln::findConfig(l) };
@@ -33,7 +33,7 @@ Config ConfigFile::getConfig(const key& k) {
 	return Config{ "", "" };
 }
 
-Config ConfigFile::getConfigFromComments(const key& k) {
+Config ConfigFile::getConfigFromComments(const key& k) const {
 	for (line l : this->ls) {
 		if (getTypeOfLine(l) == COMMENT) {
 			l[0] = ' ';
@@ -44,7 +44,7 @@ Config ConfigFile::getConfigFromComments(const key& k) {
 	return Config{ "", "" };
 }
 
-bool ConfigFile::saveConfigToFile(const filePath& cfgFile) {
+bool ConfigFile::saveConfigToFile(const filePath& cfgFile) const {
 	std::ofstream fout(cfgFile);
 	if (!fout.is_open()) return false;
 
@@ -54,9 +54,8 @@ bool ConfigFile::saveConfigToFile(const filePath& cfgFile) {
 	return true;
 }
 
-ConfigFile::TypeOfLine ConfigFile::getTypeOfLine(const line& l) {
+ConfigFile::TypeOfLine ConfigFile::getTypeOfLine(const line& l) const {
 	if (l.size() == 0) return BLANK;
 	if (l[0] == '#') return COMMENT;
 	return CFG;
 }
-
