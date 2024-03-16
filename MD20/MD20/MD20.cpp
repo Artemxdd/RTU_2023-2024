@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ConfigFile.h"
+#include "ConfigFilesHandler/ConfigFile.h"
 
 static std::string getProjectPath(const std::string& path) {
     std::string projectPath{ "" };
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         << "Key = " << k1 << "\nValue = " << cfg.getValue() << "\n";
 
     // Check if configuration is in comments
-    cfg = cfgFile.getConfigFromComments(k1);
+    //cfg = cfgFile.getConfigFromComments(k1);
     if (cfg.getValue() == "") std::cout << "There is no the config with this key in comments!" << "\n";
     else std::cout << "There is the config with this key in comments!\n" 
         << "Key = " << k1 << "\nValue = " << cfg.getValue() << "\n";

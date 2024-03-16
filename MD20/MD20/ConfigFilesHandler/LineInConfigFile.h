@@ -16,8 +16,8 @@ public:
 	Config getConfig() const;	// Getter
 
 	void setLine(const line& l);	// Setter
-	void setKey(const key& k);	// Setter
-	void setValue(const value& v);	// Setter
+	void setKey(const key& k) override;	// Setter
+	void setValue(const value& v) override;	// Setter
 
 private:
 	line l;
