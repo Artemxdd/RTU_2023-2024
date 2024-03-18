@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.29)
+project(src/MD21_CMake)
+add_subdirectory(src/Labyrinth)
+add_executable(labyrinth MD21.cpp)
+#target_link_libraries(MD21_CMake PUBLIC Labyrinth)

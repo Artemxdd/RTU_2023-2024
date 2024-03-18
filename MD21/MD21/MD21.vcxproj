@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LabyrinthAnsiColors.cpp" />
     <ClCompile Include="LabyrinthFieldWithHalts.cpp" />
     <ClCompile Include="LabyrinthFieldWithoutHalts.cpp" />
     <ClCompile Include="LabyrinthSolver.cpp" />

@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|solutionrelative:MD21\\LabyrinthSolver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|solutionrelative:MD21\\LabyrinthSolver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\MD21.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B13B01E-2A79-4187-A8E8-090C4079FFDF}|MD21\\MD21.vcxproj|solutionrelative:MD21\\MD21.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LabyrinthSolver.cpp",
+              "DocumentMoniker": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.cpp",
+              "RelativeDocumentMoniker": "MD21\\LabyrinthSolver.cpp",
+              "ToolTip": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.cpp",
+              "RelativeToolTip": "MD21\\LabyrinthSolver.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-17T12:35:16.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LabyrinthSolver.h",
+              "DocumentMoniker": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.h",
+              "RelativeDocumentMoniker": "MD21\\LabyrinthSolver.h",
+              "ToolTip": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\LabyrinthSolver.h",
+              "RelativeToolTip": "MD21\\LabyrinthSolver.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-17T12:17:27.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MD21.cpp",
+              "DocumentMoniker": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\MD21.cpp",
+              "RelativeDocumentMoniker": "MD21\\MD21.cpp",
+              "ToolTip": "C:\\Projects\\VisualStudio\\RTU(2023-2024)\\MD21\\MD21\\MD21.cpp",
+              "RelativeToolTip": "MD21\\MD21.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-17T12:15:10.886Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

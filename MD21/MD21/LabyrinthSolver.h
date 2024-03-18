@@ -1,19 +1,34 @@
 #pragma once
 
-#include "LabyrinthField.h"
+#include "LabyrinthFieldWithoutHalts.h"
+#include "LabyrinthFieldWithHalts.h"
+#include "LabyrinthPrinter.h"
 
-typedef std::vector<LabyrinthField> fields_with_routes_t;
+//typedef std::vector<LabyrinthFieldWithoutHalts> fields_without_halts_t;
+//typedef std::vector<LabyrinthFieldWithHalts> fields_with_halts_t;  
 
-class LabyrinthSolver : public LabyrinthField {
+template<class T>
+class LabyrinthSolver {
 public:
-  LabyrinthSolver(const file_path_t& filePath);
+  //LabyrinthSolver(const file_path_t& filePath);
+  LabyrinthSolver(const T& labyrinthField);
   
-  fields_with_routes_t getFieldsWithRoutes() const; // Getter
+  // Getters
+  std::vector<T> getRoutes() const;
+  //fields_without_halts_t getFieldsWithoutHalts() const;
+  //fields_with_halts_t getFieldsWithHalts() const;
 
-  void findRoutes(LabyrinthField field, row_t row, column_t column);
-  //void findRoutesWithHalts(LabyrinthField field, row_t row, column_t column);
+  void findRoutes();
+  //void findRoutesWithoutHalts(LabyrinthFieldWithoutHalts field, row_t row, column_t column);
+  //void findRoutesWithHalts(LabyrinthFieldWithHalts field, row_t row, column_t column, size_t haltsNumber);
 
 private:
-  fields_with_routes_t fieldsWithRoutes;
+  T labyrinthField_;
+  std::vector<T> labyrinthRoutes_;
+  //fields_without_halts_t fieldsWithoutHalts_;
+  //fields_with_halts_t fieldWithHalts_;
+  //FieldType fieldType_;
+
+  void findRoutes(T field, row_t row, column_t, size_t haltsNumber);
 };
 

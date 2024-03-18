@@ -36,6 +36,9 @@
     <ClCompile Include="LabyrinthFieldWithoutHalts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LabyrinthAnsiColors.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LabyrinthField.h">

@@ -6,6 +6,7 @@ LabyrinthCell::LabyrinthCell(const value_t& value, const row_t& row, const colum
 	this->column_ = column;
 	if (value == 'S') this->cellType_ = CellType::START;
 	else if (value == 'F') this->cellType_ = CellType::FINISH;
+	else if (value == 'H') this->cellType_ = CellType::HALT;
 	else if (value == ' ') this->cellType_ = CellType::EMPTY;
 	else if (value == '#') this->cellType_ = CellType::BARRIER;
 	else this->cellType_ = CellType::TRACE;

@@ -1,16 +1,30 @@
 #include "LabyrinthPrinter.h"
 
-LabyrinthPrinter::LabyrinthPrinter(const LabyrinthField& field, const color_t& start, const color_t& finish,
-	const color_t& barrier, const color_t& trace) {
-	this->field_ = field;
-	this->start_ = start;
-	this->finish_ = finish;
-	this->barrier_ = barrier;
-	this->trace_ = trace;
+LabyrinthPrinter::LabyrinthPrinter(LabyrinthField& field) : field_(field) {
 }
 
 void LabyrinthPrinter::operator=(const LabyrinthField& field) {
 	this->field_ = field;
+}
+
+void LabyrinthPrinter::setStartColor(color_t color) {
+	this->start_ = color;
+}
+
+void LabyrinthPrinter::setFinishColor(color_t color) {
+	this->finish_ = color;
+}
+
+void LabyrinthPrinter::setBarrierColor(color_t color) {
+	this->barrier_ = color;
+}
+
+void LabyrinthPrinter::setTraceColor(color_t color) {
+	this->trace_ = color;
+}
+
+void LabyrinthPrinter::setHaltColor(color_t color) {
+	this->halt_ = color;
 }
 
 void LabyrinthPrinter::print() const {

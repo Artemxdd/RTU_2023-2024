@@ -2,31 +2,30 @@
 
 #include <cinttypes>
 #include <iostream>
+#include "LabyrinthAnsiColors.cpp"
 #include "LabyrinthField.h"
-
-typedef int32_t color_t;
-
-const color_t COLOR_BLACK{ 0 };
-const color_t COLOR_RED{ 31 };
-const color_t COLOR_GREEN{ 32 };
-const color_t COLOR_BLUE{ 34 };
-const color_t COLOR_WHITE{ 37 };
 
 class LabyrinthPrinter {
 public:
-	LabyrinthPrinter(const LabyrinthField& field, const color_t& start, const color_t& finish,
-		const color_t& barrier, const color_t& track);
+	LabyrinthPrinter(LabyrinthField& field);
 
-	void operator=(const LabyrinthField& field);	// Setter
+	// Setters
+	void operator=(const LabyrinthField& field);
+	void setStartColor(color_t color);
+	void setFinishColor(color_t color);
+	void setBarrierColor(color_t color);
+	void setTraceColor(color_t color);
+	void setHaltColor(color_t color);
 
 	void print() const;
 
 private:
-	LabyrinthField field_;
-	color_t start_;
-	color_t finish_;
-	color_t barrier_;
-	color_t trace_;
+	LabyrinthField& field_;
+	color_t start_		=		COLOR_GREEN;
+	color_t finish_		=		COLOR_RED;
+	color_t barrier_	=		COLOR_WHITE;
+	color_t trace_		=		COLOR_BLUE;
+	color_t halt_			=		COLOR_BLACK;
 
 	void setColor(const color_t& color) const;
 };
