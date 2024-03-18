@@ -63,6 +63,13 @@ bool LabyrinthField::isCellExist(const row_t& row, const column_t& column) const
   return false;
 }
 
+bool LabyrinthField::isFirstStep() const {
+  for (auto& cell : this->field_)
+    if (cell.getCellType() == CellType::TRACE)
+      return false;
+  return true;
+}
+
 void LabyrinthField::defineStart() {
   for (auto& cell : this->field_)
     if (cell.getCellType() == CellType::START)

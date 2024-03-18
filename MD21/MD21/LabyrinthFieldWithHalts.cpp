@@ -1,7 +1,14 @@
 #include "LabyrinthFieldWithHalts.h"
 
 LabyrinthFieldWithHalts::LabyrinthFieldWithHalts(const file_path_t& filePath) : LabyrinthField(filePath) {
-	// ...
+  this->haltsNumber_ = 0;
+  for (auto& cell : this->field_)
+    if (cell.getCellType() == CellType::HALT)
+      this->haltsNumber_++;
+}
+
+size_t LabyrinthFieldWithHalts::getHaltsNumber() const {
+  return this->haltsNumber_;
 }
 
 bool LabyrinthFieldWithHalts::isCellHalt(const row_t& row, const column_t& column) const {
