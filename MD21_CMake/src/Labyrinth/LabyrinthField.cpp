@@ -56,11 +56,26 @@ void LabyrinthField::setCellType(const row_t& row, const column_t& column, const
       cell.setCellType(cellType);
 }
 
+size_t LabyrinthField::countSteps() const {
+  size_t stepsNumber{ 0 };
+  for (auto& cell : this->field_)
+    if (cell.getCellType() == CellType::TRACE)
+      stepsNumber++;
+  return stepsNumber;
+}
+
 bool LabyrinthField::isCellExist(const row_t& row, const column_t& column) const {
   for (auto& cell : this->field_)
     if ((cell.getRow() == row) && (cell.getColumn() == column))
       return true;
   return false;
+}
+
+bool LabyrinthField::isFirstStep() const {
+  for (auto& cell : this->field_)
+    if (cell.getCellType() == CellType::TRACE)
+      return false;
+  return true;
 }
 
 void LabyrinthField::defineStart() {

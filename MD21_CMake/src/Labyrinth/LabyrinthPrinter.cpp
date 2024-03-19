@@ -47,6 +47,7 @@ void LabyrinthPrinter::print() const {
 		std::cout << cell.getValue();
 		setColor(COLOR_BLACK);
 	}
+	setColor(COLOR_WHITE);
 	std::cout << "\n----------------------------------------\n";
 }
 

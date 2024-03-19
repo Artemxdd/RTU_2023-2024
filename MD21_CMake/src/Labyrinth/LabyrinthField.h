@@ -31,7 +31,10 @@ public:
   void setCellValue(const row_t& row, const column_t& column, const value_t& value);
   void setCellType(const row_t& row, const column_t& column, const CellType& cellType);
 
+  size_t countSteps() const;
+
   bool isCellExist(const row_t& row, const column_t& column) const;
+  bool isFirstStep() const;
 
 protected:
   field_t field_;

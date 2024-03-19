@@ -5,14 +5,42 @@ fields_without_halts_t LabyrinthSolver::getFieldsWithoutHalts() const {
 }
 
 fields_with_halts_t LabyrinthSolver::getFieldsWithHalts() const {
-	return this->fieldWithHalts_;
+	return this->fieldsWithHalts_;
+}
+
+LabyrinthFieldWithoutHalts LabyrinthSolver::getFieldWithoutHaltsWithShortestTrace() const {
+	size_t stepsNumber { INT_MAX };
+	size_t shortestTraceId{ 0 };
+	for (size_t i{ 0 }; i < this->fieldsWithoutHalts_.size(); i++) {
+		size_t tmpStepsNumber{ this->fieldsWithoutHalts_[i].countSteps() };
+		if (tmpStepsNumber < stepsNumber) {
+			stepsNumber = tmpStepsNumber;
+			shortestTraceId = i;
+		}
+	}
+	return this->fieldsWithoutHalts_[shortestTraceId];
+}
+
+LabyrinthFieldWithHalts LabyrinthSolver::getFieldWithHaltsWithShortestTrace() const {
+	size_t stepsNumber{ INT_MAX };
+	size_t shortestTraceId{ 0 };
+	for (size_t i{ 0 }; i < this->fieldsWithHalts_.size(); i++) {
+		size_t tmpStepsNumber{ this->fieldsWithHalts_[i].countSteps() };
+		if (tmpStepsNumber < stepsNumber) {
+			stepsNumber = tmpStepsNumber;
+			shortestTraceId = i;
+		}
+	}
+	return this->fieldsWithHalts_[shortestTraceId];
 }
 
 void LabyrinthSolver::findRoutesWithoutHalts(const LabyrinthFieldWithoutHalts& field) {
+	this->fieldsWithoutHalts_.clear();
 	findRoutesWithoutHalts(field, field.getStart()->getRow(), field.getStart()->getColumn());
 }
 
 void LabyrinthSolver::findRoutesWithHalts(const LabyrinthFieldWithHalts& field) {
+	this->fieldsWithoutHalts_.clear();
 	findRoutesWithHalts(field, field.getStart()->getRow(), field.getStart()->getColumn(), 
 		field.getHaltsNumber());
 }
@@ -58,7 +86,7 @@ void LabyrinthSolver::findRoutesWithHalts(LabyrinthFieldWithHalts field, row_t r
 	if (cellType == CellType::HALT) 
 		haltsNumber--;
 	if ((cellType == CellType::FINISH) && (haltsNumber == 0)) {
-		this->fieldWithHalts_.push_back(field);
+		this->fieldsWithHalts_.push_back(field);
 		return;
 	}
 	if (cellType == CellType::FINISH) return;
