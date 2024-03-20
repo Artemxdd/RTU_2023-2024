@@ -1,6 +1,9 @@
 #include <iostream>
 #include "LabyrinthLib/LabyrinthSolver.h"
 #include "Labyrinthlib/LabyrinthPrinter.h"
+#include "boost/program_options.hpp"
+
+namespace po = boost::program_options;
 
 int main(int argc, char* argv[]) {
   file_path_t labyrinthPath{ "" };
