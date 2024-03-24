@@ -1,6 +1,6 @@
 #include <iostream>
-#include "LabyrinthLib/LabyrinthSolver.h"
-#include "Labyrinthlib/LabyrinthPrinter.h"
+#include "LabyrinthLib/Solver.h"
+#include "Labyrinthlib/Printer.h"
 #include "boost/program_options.hpp"
 
 namespace po = boost::program_options;
@@ -26,41 +26,39 @@ int main(int argc, char* argv[]) {
 
   if (vm.count("p")) {
     file_path_t labyrinthPath = vm["p"].as<std::string>();
-    LabyrinthSolver labyrinthSolver;
+    Solver labyrinthSolver;
 
     if (vm.count("H")) {  // labyrinth with halts
+      FieldWithHalts field{ labyrinthPath };
+      labyrinthSolver.findRoutesWithHalts(field);
+
       if (vm.count("a")) {  // all routes 
-        LabyrinthFieldWithHalts field{ labyrinthPath };
-        labyrinthSolver.findRoutesWithHalts(field);
-        for (LabyrinthFieldWithHalts& field : labyrinthSolver.getFieldsWithHalts()) {
-          LabyrinthPrinter printer{ field };
+        for (FieldWithHalts& field : labyrinthSolver.getFieldsWithHalts()) {
+          Printer printer{ field };
           printer.print();
         }
       }
       else if (vm.count("s")) { // shortest route
-        LabyrinthFieldWithHalts field{ labyrinthPath };
-        labyrinthSolver.findRoutesWithHalts(field);
-        LabyrinthFieldWithHalts shortestField{ labyrinthSolver
+        FieldWithHalts shortestField{ labyrinthSolver
           .getFieldWithHaltsWithShortestTrace() };
-        LabyrinthPrinter printer{ shortestField };
+        Printer printer{ shortestField };
         printer.print();
       }
     }
     else if (vm.count("h")) { // labyrinth without halts
+      Field field{ labyrinthPath };
+      labyrinthSolver.findRoutesWithoutHalts(field);
+
       if (vm.count("a")) {  // all routes 
-        LabyrinthFieldWithoutHalts field{ labyrinthPath };
-        labyrinthSolver.findRoutesWithoutHalts(field);
-        for (LabyrinthFieldWithoutHalts& field : labyrinthSolver.getFieldsWithoutHalts()) {
-          LabyrinthPrinter printer{ field };
+        for (Field& field : labyrinthSolver.getFieldsWithoutHalts()) {
+          Printer printer{ field };
           printer.print();
         }
       }
       else if (vm.count("s")) { // shortest route
-        LabyrinthFieldWithoutHalts field{ labyrinthPath };
-        labyrinthSolver.findRoutesWithoutHalts(field);
-        LabyrinthFieldWithoutHalts shortestField{ labyrinthSolver
+        Field shortestField{ labyrinthSolver
           .getFieldWithoutHaltsWithShortestTrace() };
-        LabyrinthPrinter printer{ shortestField };
+        Printer printer{ shortestField };
         printer.print();
       }
     }

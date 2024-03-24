@@ -1,14 +1,14 @@
-#include "LabyrinthSolver.h"
+#include "Solver.h"
 
-fields_without_halts_t LabyrinthSolver::getFieldsWithoutHalts() const {
+fields_without_halts_t Solver::getFieldsWithoutHalts() const {
 	return this->fieldsWithoutHalts_;
 }
 
-fields_with_halts_t LabyrinthSolver::getFieldsWithHalts() const {
+fields_with_halts_t Solver::getFieldsWithHalts() const {
 	return this->fieldsWithHalts_;
 }
 
-LabyrinthFieldWithoutHalts LabyrinthSolver::getFieldWithoutHaltsWithShortestTrace() const {
+Field Solver::getFieldWithoutHaltsWithShortestTrace() const {
 	size_t stepsNumber { INT_MAX };
 	size_t shortestTraceId{ 0 };
 	for (size_t i{ 0 }; i < this->fieldsWithoutHalts_.size(); i++) {
@@ -21,7 +21,7 @@ LabyrinthFieldWithoutHalts LabyrinthSolver::getFieldWithoutHaltsWithShortestTrac
 	return this->fieldsWithoutHalts_[shortestTraceId];
 }
 
-LabyrinthFieldWithHalts LabyrinthSolver::getFieldWithHaltsWithShortestTrace() const {
+FieldWithHalts Solver::getFieldWithHaltsWithShortestTrace() const {
 	size_t stepsNumber{ INT_MAX };
 	size_t shortestTraceId{ 0 };
 	for (size_t i{ 0 }; i < this->fieldsWithHalts_.size(); i++) {
@@ -34,35 +34,35 @@ LabyrinthFieldWithHalts LabyrinthSolver::getFieldWithHaltsWithShortestTrace() co
 	return this->fieldsWithHalts_[shortestTraceId];
 }
 
-void LabyrinthSolver::findRoutesWithoutHalts(const LabyrinthFieldWithoutHalts& field) {
+void Solver::findRoutesWithoutHalts(const Field& field) {
 	this->fieldsWithoutHalts_.clear();
 	findRoutesWithoutHalts(field, field.getStart()->getRow(), field.getStart()->getColumn());
 }
 
-void LabyrinthSolver::findRoutesWithHalts(const LabyrinthFieldWithHalts& field) {
+void Solver::findRoutesWithHalts(const FieldWithHalts& field) {
 	this->fieldsWithoutHalts_.clear();
 	findRoutesWithHalts(field, field.getStart()->getRow(), field.getStart()->getColumn(), 
 		field.getHaltsNumber());
 }
 
-void LabyrinthSolver::findRoutesWithoutHalts(LabyrinthFieldWithoutHalts field, row_t row, column_t column) {
-	CellType cellType{ field(row, column).getCellType() };
+void Solver::findRoutesWithoutHalts(Field field, cell_row_t row, cell_column_t column) {
+	cell_type_t cellType{ field(row, column).getType() };
 
-	if ((cellType == CellType::START) && (!field.isFirstStep()))
+	if ((cellType == cell_type_t::START) && (!field.isFirstStep()))
 		return;
-	if (cellType == CellType::FINISH) {
+	if (cellType == cell_type_t::FINISH) {
 		this->fieldsWithoutHalts_.push_back(field);
 		return;
 	}
-	if ((cellType == CellType::BARRIER) || (cellType == CellType::TRACE))
+	if ((cellType == cell_type_t::BARRIER) || (cellType == cell_type_t::TRACE))
 		return;
 
-	if (cellType != CellType::START) {
-		field.setCellValue(row, column, '*');
-		field.setCellType(row, column, CellType::TRACE);
+	if (cellType != cell_type_t::START) {
+		field(row, column).setValue('*');
+		field(row, column).setType(cell_type_t::TRACE);
 	}
 
-	//LabyrinthPrinter printer{ field };
+	//Printer printer{ field };
 	//printer.print();
 	
 	if (field.isCellExist(row - 1, column))
@@ -75,27 +75,27 @@ void LabyrinthSolver::findRoutesWithoutHalts(LabyrinthFieldWithoutHalts field, r
 		findRoutesWithoutHalts(field, row, column - 1);
 }
 
-void LabyrinthSolver::findRoutesWithHalts(LabyrinthFieldWithHalts field, row_t row, column_t column, 
+void Solver::findRoutesWithHalts(FieldWithHalts field, cell_row_t row, cell_column_t column, 
 	size_t haltsNumber) {
-	CellType cellType{ field(row, column).getCellType() };
-	//LabyrinthPrinter printer{ field };
+	cell_type_t cellType{ field(row, column).getType() };
+	//Printer printer{ field };
 	//printer.print();
 
-	if ((cellType == CellType::START) && (!field.isFirstStep()))
+	if ((cellType == cell_type_t::START) && (!field.isFirstStep()))
 		return;
-	if (cellType == CellType::HALT) 
+	if (cellType == cell_type_t::HALT)
 		haltsNumber--;
-	if ((cellType == CellType::FINISH) && (haltsNumber == 0)) {
+	if ((cellType == cell_type_t::FINISH) && (haltsNumber == 0)) {
 		this->fieldsWithHalts_.push_back(field);
 		return;
 	}
-	if (cellType == CellType::FINISH) return;
-	if ((cellType == CellType::BARRIER) || (cellType == CellType::TRACE))
+	if (cellType == cell_type_t::FINISH) return;
+	if ((cellType == cell_type_t::BARRIER) || (cellType == cell_type_t::TRACE))
 		return;
 
-	if ((cellType != CellType::START) && (cellType != CellType::HALT)) {
-		field.setCellValue(row, column, '*');
-		field.setCellType(row, column, CellType::TRACE);
+	if ((cellType != cell_type_t::START) && (cellType != cell_type_t::HALT)) {
+		field(row, column).setValue('*');
+		field(row, column).setType(cell_type_t::TRACE);
 	}
 
 	if (field.isCellExist(row - 1, column))

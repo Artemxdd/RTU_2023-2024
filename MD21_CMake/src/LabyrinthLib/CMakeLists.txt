@@ -1,15 +1,15 @@
 add_library(LabyrinthLib
-	LabyrinthAnsiColors.cpp
-	LabyrinthCell.cpp
-	LabyrinthCell.h
-	LabyrinthField.cpp
-	LabyrinthField.h
-	LabyrinthFieldWithHalts.cpp
-	LabyrinthFieldWithHalts.h
-	LabyrinthFieldWithoutHalts.cpp
-	LabyrinthFieldWithoutHalts.h
-	LabyrinthPrinter.cpp
-	LabyrinthPrinter.h
-	LabyrinthSolver.cpp
-	LabyrinthSolver.h
+	AnsiColors.cpp
+	Cell.cpp
+	Cell.h
+	Field.cpp
+	Field.h
+	FieldWithHalts.cpp
+	FieldWithHalts.h
+	Printer.cpp
+	Printer.h
+	Solver.cpp
+	Solver.h
+	Saver.cpp
+	Saver.h
 )
