@@ -1,5 +1,6 @@
 add_library(LabyrinthLib
-	AnsiColors.cpp
+	labyrinth.h
+	AnsiColors.h
 	Cell.cpp
 	Cell.h
 	Field.cpp

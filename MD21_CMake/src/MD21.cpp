@@ -1,6 +1,5 @@
 #include <iostream>
-#include "LabyrinthLib/Solver.h"
-#include "Labyrinthlib/Printer.h"
+#include "LabyrinthLib/labyrinth.h"
 #include "boost/program_options.hpp"
 
 namespace po = boost::program_options;
@@ -20,6 +19,7 @@ int main(int argc, char* argv[]) {
   po::notify(vm);
 
   if (vm.count("help")) {
+    std::cout << "Usage:\n" << "\tlabyrinthExecutable.exe --p <path-to-labyrinth> --h/--H --a/--s" << "\n";
     std::cout << options << "\n";
     return 0;
   }

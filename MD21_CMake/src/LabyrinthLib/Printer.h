@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "AnsiColors.cpp"
+#include "AnsiColors.h"
 #include "Field.h"
 
 class Printer {

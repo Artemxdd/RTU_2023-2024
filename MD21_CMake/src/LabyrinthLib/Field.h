@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include "AnsiColors.cpp"
+#include "AnsiColors.h"
 #include "Cell.h"
 
 typedef std::string file_path_t;
