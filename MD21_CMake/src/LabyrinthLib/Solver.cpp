@@ -9,7 +9,7 @@ fields_with_halts_t Solver::getFieldsWithHalts() const {
 }
 
 Field Solver::getFieldWithoutHaltsWithShortestTrace() const {
-	size_t stepsNumber { INT_MAX };
+	size_t stepsNumber { ULLONG_MAX };
 	size_t shortestTraceId{ 0 };
 	for (size_t i{ 0 }; i < this->fieldsWithoutHalts_.size(); i++) {
 		size_t tmpStepsNumber{ this->fieldsWithoutHalts_[i].countSteps() };
@@ -22,7 +22,7 @@ Field Solver::getFieldWithoutHaltsWithShortestTrace() const {
 }
 
 FieldWithHalts Solver::getFieldWithHaltsWithShortestTrace() const {
-	size_t stepsNumber{ INT_MAX };
+	size_t stepsNumber{ ULLONG_MAX };
 	size_t shortestTraceId{ 0 };
 	for (size_t i{ 0 }; i < this->fieldsWithHalts_.size(); i++) {
 		size_t tmpStepsNumber{ this->fieldsWithHalts_[i].countSteps() };
@@ -46,7 +46,7 @@ void Solver::findRoutesWithHalts(const FieldWithHalts& field) {
 }
 
 void Solver::findRoutesWithoutHalts(Field field, cell_row_t row, cell_column_t column) {
-	cell_type_t cellType{ field(row, column).getType() };
+	cell_type_t cellType{ field(row, column)->getType() };
 
 	if ((cellType == cell_type_t::START) && (!field.isFirstStep()))
 		return;
@@ -58,8 +58,8 @@ void Solver::findRoutesWithoutHalts(Field field, cell_row_t row, cell_column_t c
 		return;
 
 	if (cellType != cell_type_t::START) {
-		field(row, column).setValue('*');
-		field(row, column).setType(cell_type_t::TRACE);
+		field(row, column)->setValue('*');
+		field(row, column)->setType(cell_type_t::TRACE);
 	}
 
 	//Printer printer{ field };
@@ -77,26 +77,27 @@ void Solver::findRoutesWithoutHalts(Field field, cell_row_t row, cell_column_t c
 
 void Solver::findRoutesWithHalts(FieldWithHalts field, cell_row_t row, cell_column_t column, 
 	size_t haltsNumber) {
-	cell_type_t cellType{ field(row, column).getType() };
-	//Printer printer{ field };
-	//printer.print();
+	cell_type_t cellType{ field(row, column)->getType() };
 
 	if ((cellType == cell_type_t::START) && (!field.isFirstStep()))
 		return;
 	if (cellType == cell_type_t::HALT)
 		haltsNumber--;
-	if ((cellType == cell_type_t::FINISH) && (haltsNumber == 0)) {
-		this->fieldsWithHalts_.push_back(field);
+	if (cellType == cell_type_t::FINISH) {
+		if (haltsNumber == 0)
+			this->fieldsWithHalts_.push_back(field);
 		return;
 	}
-	if (cellType == cell_type_t::FINISH) return;
 	if ((cellType == cell_type_t::BARRIER) || (cellType == cell_type_t::TRACE))
 		return;
 
 	if ((cellType != cell_type_t::START) && (cellType != cell_type_t::HALT)) {
-		field(row, column).setValue('*');
-		field(row, column).setType(cell_type_t::TRACE);
+		field(row, column)->setValue('*');
+		field(row, column)->setType(cell_type_t::TRACE);
 	}
+
+	//Printer printer{ field };
+	//printer.print();
 
 	if (field.isCellExist(row - 1, column))
 		findRoutesWithHalts(field, row - 1, column, haltsNumber);

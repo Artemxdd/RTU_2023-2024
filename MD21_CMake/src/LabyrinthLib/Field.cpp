@@ -23,10 +23,11 @@ field_t Field::getField() const {
   return this->field_;
 }
 
-Cell& Field::operator()(const cell_row_t& row, const cell_column_t& column) {
+Cell* Field::operator()(const cell_row_t& row, const cell_column_t& column) {
   for (Cell& cell : this->field_)
     if ((cell.getRow() == row) && (cell.getColumn() == column))
-      return cell;
+      return &cell;
+  return nullptr;
 }
 
 void Field::operator=(const file_path_t& filePath) {

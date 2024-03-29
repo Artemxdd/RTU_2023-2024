@@ -11,6 +11,4 @@ add_library(LabyrinthLib
 	Printer.h
 	Solver.cpp
 	Solver.h
-	Saver.cpp
-	Saver.h
 )

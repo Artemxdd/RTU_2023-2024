@@ -13,7 +13,7 @@ class Field {
 public:
   Field(const file_path_t& filePath);
 
-  Cell& operator()(const cell_row_t& row, const cell_column_t& column);
+  Cell* operator()(const cell_row_t& row, const cell_column_t& column);
   void operator=(const file_path_t& filePath);
 
   // Getters
