@@ -18,7 +18,7 @@ public:
 
 	void print() const;
 
-	static void setConsoleColor(const color_t& color);
+	static void setConsoleColor(const color_t& ansiColor);
 
 private:
 	Field& field_;
