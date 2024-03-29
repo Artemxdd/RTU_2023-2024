@@ -55,5 +55,5 @@ void Printer::print() const {
 }
 
 void Printer::setConsoleColor(const color_t& ansiColor) {
-	std::cout << "\x1b[" << color << "m";
+	std::cout << "\x1b[" << ansiColor << "m";
 }
