@@ -1,4 +1,0 @@
-﻿  MD21.cpp
-C:\Program Files\boost\boost_1_84_0\boost_1_84_0\boost\filesystem.hpp(15,10): error C1083: Cannot open include file: 'boost/filesystem/config.hpp': No such file or directory
-  (compiling source file 'MD21.cpp')
-  
