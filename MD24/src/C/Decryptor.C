@@ -12,9 +12,9 @@ void Decryptor::decrypt(const std::string& encryptedTxt) {
     int decr3{ (encr3 & 0b1000000) << 1 | (encr2 & 0b10000) << 2 | (encr1 & 0b1000) << 2 | (encr4 & 0b1000) << 1 |
       (encr3 & 0b100) << 1 | (encr2 & 0b10) << 1 | (encr1 & 0b1) << 1 | encr4 & 0b1 };
 
-    this->decryptedTxt_.push_back((char)decr1);
-    this->decryptedTxt_.push_back((char)decr2);
-    this->decryptedTxt_.push_back((char)decr3);
+    this->decryptedTxt_.push_back(decr1);
+    this->decryptedTxt_.push_back(decr2);
+    this->decryptedTxt_.push_back(decr3);
   }
 }
 
