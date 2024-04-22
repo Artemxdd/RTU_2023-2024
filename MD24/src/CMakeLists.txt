@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(MD24)
+file(GLOB headers "h/*.h")
+file(GLOB sources "C/*.C")
+add_executable(MD24Exec ${sources})
