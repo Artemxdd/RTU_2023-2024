@@ -1,0 +1,8 @@
+#include "../h/Line.h"
+
+void Line::push_back(const char& chr) {
+  if (this->size_ >= MAX_TEXT_SIZE) return;
+
+  this->lastChar_++;
+  *this->lastChar_ = chr;
+}

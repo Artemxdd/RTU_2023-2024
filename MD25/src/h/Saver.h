@@ -1,0 +1,6 @@
+class Encryptor {
+public:
+  
+private:
+
+};
