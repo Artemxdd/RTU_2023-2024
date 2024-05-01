@@ -1,6 +1,0 @@
-class Encryptor {
-public:
-  
-private:
-
-};

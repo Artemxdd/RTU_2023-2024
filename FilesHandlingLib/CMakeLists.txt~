@@ -1,0 +1,7 @@
+add_library(
+  FilesHandlingLib SHARED
+  h/Saver.h
+  h/Reader.h
+  C/Saver.C
+  C/Reader.C
+)

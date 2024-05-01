@@ -1,5 +1,0 @@
-#include "../h/Reader.h"
-
-bool Reader::readFile(const char filePath[]) {
-  std::cout << strlen(filePath) << "\n";
-}
