@@ -4,5 +4,10 @@ file(GLOB headers "main/h/*.h")
 file(GLOB sources "main/C/*.C")
 add_executable(MD25Exec ${sources} ${headers})
 
-target_include_directories(FilesHandlingLib PUBLIC)
-target_link_libraries(FilesHandlingLib)
+# Files Handling Library
+add_subdirectory(FilesHandlingLib)
+target_link_libraries(MD25Exec PUBLIC FilesHandlingLib)
+target_include_directories(MD25Exec PUBLIC
+  "${PROJECT_BINARY_DIR}"
+  "${PROJECT_SOURCE_DIR}/FilesHandlingLib"
+)

@@ -17,13 +17,29 @@ void Decryptor::decrypt(const std::string& encryptedTxt, const std::string& pass
       (encr3 & 0b100) << 1 | (encr2 & 0b10) << 1 | (encr1 & 0b1) << 1 | encr4 & 0b1 };
 
     decr1 ^= password[passwordIndex++];
+    if (passwordIndex == password.size())
+      passwordIndex = 0;
+    
     decr2 ^= password[passwordIndex++];
+    if (passwordIndex == password.size())
+      passwordIndex = 0;
+    
     decr3 ^= password[passwordIndex++];
+    if (passwordIndex == password.size())
+      passwordIndex = 0;
     
     this->decryptedTxt_.push_back(decr1);
     this->decryptedTxt_.push_back(decr2);
     this->decryptedTxt_.push_back(decr3);
   }
+}
+
+bool Decryptor::isText() const {
+  for (auto it : decryptedTxt_) {
+    if (it < 32 && it > 126)
+      return false;
+  }
+  return true;
 }
 
 const std::string& Decryptor::getDecryptedTxt() const {
