@@ -35,8 +35,8 @@ void Decryptor::decrypt(const std::string& encryptedTxt, const std::string& pass
 }
 
 bool Decryptor::isText() const {
-  for (auto it : decryptedTxt_) {
-    if (it < 32 && it > 126)
+  for (const char& chr : decryptedTxt_) {
+    if (chr < 32 && chr > 126)
       return false;
   }
   return true;
