@@ -34,9 +34,9 @@ void Decryptor::decrypt(const std::string& encryptedTxt, const std::string& pass
   }
 }
 
-bool Decryptor::isText() const {
+bool Decryptor::isAllTextGraphical() const {
   for (const char& chr : decryptedTxt_) {
-    if (chr < 32 && chr > 126)
+    if (!std::isgraph(chr))
       return false;
   }
   return true;
